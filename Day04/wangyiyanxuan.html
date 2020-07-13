@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,ul,h1,h2,p{
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        /*新品首发*/
+        .news{
+            margin-bottom: 1em ;
+        }
+        .news > ul.list{
+            width: 1090px;
+            margin: 0 auto;
+
+            padding: 1em 0;
+
+        }
+        .news >ul.list::after{
+            content: "";
+            clear: both;
+            display: block;
+
+        }
+        .news >ul.list>li{
+            height: 300px;
+
+            float: left;
+            width: 265px;
+            margin-right: 10px;
+            margin-bottom: 1em;
+
+        }
+ 
+        .news >ul.list>li:nth-child(4n){
+            margin-right: 0;
+        }
+        .news li.item{
+            text-align: center;
+        }
+
+        .news li.item > .picture {
+            box-sizing: border-box;
+            padding-top: 1em;
+            background-color: #f3f3f3;
+            height: 220px;
+        }
+        .news .introduce >.active{
+            background-color: #e36844;
+            color:#ffffff;
+            display: inline-block;
+            margin: 2px;
+            
+        }
+        .news .introduce > .price{
+            color: #e36844;
+        }
+        /* 人气推荐 */
+        .recommand{
+            margin-bottom: 1em;
+            background-color: #f4f0ea;
+        }
+        .recommand > ul.products{
+            width: 1090px;
+            margin: 0 auto;
+            padding: 1em 0;
+        }
+        .recommand > ul.products::after{
+            clear: both;
+            content: "";
+            display: block;
+        }
+        .recommand > ul.products > li{
+            float: left;
+            width: 223px;
+            height: 300px;
+            margin-right: 10px;
+            background-color: pink;
+        }
+        .recommand > ul.products > li:first-child{
+            width: 391px;
+            height: 610px;
+        }
+
+        .recommand > ul.products > li:nth-child(4),
+        .recommand > ul.products > li:nth-child(7){
+            margin-right: 0;
+        }
+        .recommand > ul.products > li:nth-child(2),
+        .recommand > ul.products > li:nth-child(3),
+        .recommand > ul.products > li:nth-child(4){
+            margin-bottom: 10px;
+        }
+        .time{
+            margin-bottom: 1em;
+        }
+        .time > .timego{
+            width: 1090px;
+            margin: 1em auto;
+            background-color: aquamarine;
+            
+        }
+        .time > .timego::after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .time > .timego >li{
+            width: 252.2px;
+            height: 187px;
+            background-color: pink;
+            float: left;
+            margin-left: 180px;
+            padding-top: 14px;
+            margin-bottom: 34.5px;
+            text-align: center;
+
+        }
+        .time > .timego > li:first-child{
+            height: 436.5px;
+            width: 224px;
+            background-color: plum;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+
+        }
+        .time > .timego > li:nth-child(4),
+        .time > .timego > li:nth-child(5){
+            margin-bottom: 0;
+        }
+        .fulis{
+            height: 526px;
+            background-color: #f4f0ea;
+        }
+        .fulis > .fulish{
+            
+            width: 1090px;
+            margin: 0 auto;
+            background-color: aquamarine;
+            height: 526px;
+
+
+        }
+        .fulis > .fulish > .fulish1{
+            width: 224px;
+            height: 376px;
+            background-color: pink;
+            float: left;
+
+        }
+        .fulis > .fulish > .fulish2{
+            float: left;
+            width: 624px;
+            height: 376px;
+            background-color: wheat;
+
+        }
+        .fulis > .fulish > .fulish3{
+            width: 242px;
+            height: 376px;
+            background-color: thistle;
+            float: left;
+        }
+        .fulis > .fulish >.fulish2 > ul >li{
+            width: 284px;
+            height: 130px;
+            background-color: turquoise;
+            float: left;
+            margin-bottom: 20px;
+            margin-right: 20px;
+        }
+        .fulis > .fulish >.fulish2 > ul>li:first-child{
+            width: 624px;
+            height: 56px;
+        }
+        .ggtu{
+            width: 1090px;
+            height: 310px;
+            background-color: turquoise;
+            margin: 0 auto;
+        }
+        .title{
+            width: 1090px;
+            height: 140px;
+            margin: 0 auto;
+            background-color: turquoise;
+        }
+        .titlepicture{
+            width: 100%;
+            height: 420px;
+            background-color: #f3f3f3;
+        }
+        .zxj{
+            width: 1090px;
+            height: 428px;
+            background-color: #f3f3f3;
+            margin: 0 auto;
+
+        }
+        .zxj > .zxjpicture1{
+            width: 690px;
+            height: 380px;
+            background-color: pink;
+            float: left;
+            margin-right: 10px;
+        }
+        .zxj > .zxjpicture2{
+            width: 390px;
+            height: 185px;
+            background-color: pink;
+            float: left;
+        }
+        .zxj > .zxjpicture3{
+            width: 390px;
+            height: 185px;
+            background-color: pink;
+            float: left;
+            margin-top: 10px;
+        }
+        .djdzs{
+
+        }
+        .djdzs > .djdzss{
+            width: 1141px;
+
+            background-color: powderblue;
+            height: 492px;
+            margin: 0 auto;
+        }
+        .djdzs > .djdzss > ul>li{
+            width: 367px;
+            height: 492px;
+            background-color: pink;
+            float: left;
+            margin-right: 10px;
+
+        }
+        .djdzs > .djdzss > ul>li:first-child{
+            margin-left: 10px;
+        }
+        .weibu{
+            width: 100%;
+            height: 224px;
+            background-color: #f3f3f3;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+        }
+        .weibu >.weibu1{
+            width: 1092px;
+            margin: 0 auto;
+            height: 204px;
+        }
+        .weibu >.weibu1>ul>li{
+            width: 363px;
+            height: 204px;
+            background-color: pink;
+            float: left;
+            border-left: 1px solid #cccccc;
+        }
+        .weibu >.weibu1>ul>li:first-child{
+            border-left: 0px;
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+<div class="title">
+    大标题
+</div>
+<div class="titlepicture">
+    广告图片
+</div>
+</div>
+<div class="news">
+    <ul class="list">
+        <li class="item">
+            <div class="picture">
+                <img src="./images/1.png" alt="">
+            </div>
+            <div class="introduce">
+                <div class="active">每满200减25券</div>
+                <div class="name">护腰塑性座椅</div>
+                <div class="price">￥390</div>
+            </div>
+        </li>
+        <li class="item">
+            <div class="picture">
+                <img src="./images/2.png" alt="">
+            </div>
+            <div class="introduce">
+                <div class="active">每满200减25券</div>
+                <div class="name">护腰塑性座椅</div>
+                <div class="price">￥390</div>
+            </div>
+        </li>
+        <li class="item">
+            <div class="picture">
+                <img src="./images/3.png" alt="">
+            </div>
+            <div class="introduce">
+                <div class="active">每满200减25券</div>
+                <div class="name">护腰塑性座椅</div>
+                <div class="price">￥390</div>
+            </div>
+        </li>
+        <li class="item">
+            <div class="picture">
+                <img src="./images/4.png" alt="">
+            </div>
+            <div class="introduce">
+                <div class="active">每满200减25券</div>
+                <div class="name">护腰塑性座椅</div>
+                <div class="price">￥390</div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+    <div class="container">
+        <!--人气推荐-->
+        <div class="recommand">
+            <ul class="products">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <!--/人气推荐-->
+
+    </div>
+    <!--限时购-->
+    <div class="time">
+        <ul class="timego">
+            <li>模块1</li>
+            <li>模块2</li>
+            <li>模块3</li>
+            <li>模块4</li>
+            <li>模块5</li>
+        </ul>
+    <!--福利社-->
+    <div class="fulis">
+        <div class="fulish">
+            <div class="fulish1">
+                模块1
+            </div>
+            <div class="fulish2">
+                <ul class="fulishe">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="fulish3">
+
+            </div>
+        </div>    
+    </div>
+    <div class="ggtu">
+        广告图img
+    </div>
+    <div class="news">
+        <ul class="list">
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/1.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/2.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/3.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/4.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="ggtu">
+        广告图img
+    </div>
+    <div class="news">
+        <ul class="list">
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/1.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/2.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/3.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/4.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="ggtu">
+        广告图img
+    </div>
+    <div class="news">
+        <ul class="list">
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/1.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/2.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/3.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/4.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="ggtu">
+        广告图img
+    </div>
+    <div class="news">
+        <ul class="list">
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/1.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/2.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/3.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/4.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="ggtu">
+        广告图img
+    </div>
+    <div class="news">
+        <ul class="list">
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/1.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/2.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/3.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/4.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="ggtu">
+        广告图img
+    </div>
+    <div class="news">
+        <ul class="list">
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/1.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/2.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/3.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="picture">
+                    <img src="./images/4.png" alt="">
+                </div>
+                <div class="introduce">
+                    <div class="active">每满200减25券</div>
+                    <div class="name">护腰塑性座椅</div>
+                    <div class="price">￥390</div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="zxj">
+        <div class="zxjpicture1">
+            图片1
+        </div>
+        <div class="zxjpicture2">
+            图片2
+        </div>
+        <div class="zxjpicture3">
+            图片3
+        </div>
+    </div>
+    <div class="djdzs">
+        <div class="djdzss">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+        </div>
+
+    </div>
+    <div class="weibu">
+        <div class="weibu1">
+            <ul>
+                <li>客户服务</li>
+                <li>何为严选</li>
+                <li>扫码下载严选app</li>
+            </ul>
+        </div>
+        
+    </div>
+</body>
+</html>
