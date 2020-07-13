@@ -1,0 +1,110 @@
+1. float:left/right
+		1) 块元素脱离默认文档流
+			1. 默认宽度为0
+			2. 失去了对父元素支撑的能力 【伪元素】
+            2) 在浮动流中，多个同级别浮动元素在一行中显示，当这一行容纳不下，会自动换行
+	2. 清理浮动
+		为容器内部添加一个子元素，一般使用伪元素较方便
+		ul.list::after {
+			content:"";
+			display:block;
+			clear:both;
+		}
+	3. 盒子居中
+		margin:0 auto;
+	3. 案例
+		四列布局
+		7个子元素布局
+	
+7. 文本规则
+	针对于盒子内容来进行修饰。具有可继承性
+	text-align:center;
+	vertical-align:middle; 	调整行内元素的垂直排列
+	line-height:32px;
+	text-transform:
+		lowercase/
+	text-decoration-color
+	text-decoration-style
+		solid/dotted/dashed
+	text-decoration-line
+		underline/light-through/overline
+	text-decoration:underline/light-through/overline/none
+	overflow-x:
+	overflow-y:
+	overflow:
+		visible	
+		hidden
+		scroll
+8. 字体规则
+	针对于盒子内容来进行修饰。具有可继承性
+	font-family:'李氏字体','Microsoft YaHei','微软雅黑','宋体';
+	font-size:12px;
+	font-weight:normal/bold
+	font-style:normal/italic
+	color:#333;
+	font: font-size/line-height font-family;
+	font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,sans-serif
+
+	网络字体
+		1. 获取字体文件
+			woff、 eot、...
+		2. 定义网络字体
+			@font-face {
+				font-family: "iconfont";
+				//字体文件
+				src: "" 
+			}
+		3. 使用
+			// 基础样式
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+			}	
+			// 特殊样式
+			.icon-aixin:before {
+				content: "\e8ab";
+			}
+
+		<span class="iconfont icon-aixin"><span>
+
+9. 实体
+	&nbsp;
+	&lt;
+	&gt;
+10. 其他规则
+	display
+		block
+		inline
+		inline-bolck
+	列表规则
+		list-style
+	表格规则
+		border-collapse:
+
+11. 单位
+	绝对单位
+		10px
+
+	相对单位
+		1em 	, em相对于当前元素的字体大小
+		1rem 	, rem相对于html元素选择器中设定的字体大小
+
+	颜色
+		关键字 		pink
+		十六进制 	#ffffff 	#000	#f4f4f4
+		函数 			rgb(114,141,153) 	=> #8f8d98
+		函数 			rgba(114,141,153,1) 
+
+12. 背景色
+	background-
+	background
+
+
+13. 定位布局
+
+14. 伸缩盒布局
+
+16. 动画、过渡、变形
+
+17. 响应式布局
