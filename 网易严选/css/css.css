@@ -1,0 +1,100 @@
+html{
+    color: #cccccc;
+    font:12px/1.5 "Microsoft Yahei","微软雅黑";
+}
+a{
+    text-decoration: none;
+    color: #cccccc;
+}
+ul,ol{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+body,p,hi,h2,h2{
+    margin: 0;
+}
+.yemei{
+    background-color: #333;
+    height: 36px;
+}
+.yemei>.yemei2{
+    width: 1090px;
+    margin: 0 auto;
+    position: relative;
+    
+}
+.yemei>.yemei2>.yemei3{
+    float: left;
+    line-height: 36px;
+}
+
+.yemei ul{
+    position: absolute;
+    right: 0;
+    top:10px;
+
+}
+.yemei ul>li{
+    float: left;
+    position: relative;
+    text-align: center;
+    border-left: 1px solid #ccc;
+    line-height: 18px;
+    padding: 0 9px;
+}
+.yemei ul>li>.erji{
+    position: absolute;
+    display: none;
+    right: 0;
+    line-height: 18px;
+
+}
+.yemei ul>li>.erji>ul{
+    width: 85px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+}
+
+.yemei ul>li>.erji>ul>li{
+    border-bottom: 1px solid #ccc;
+    border-left: none;
+    height: 38px;
+    line-height: 38px;
+}
+
+
+.yemei ul>li:hover{
+    cursor: pointer;
+    color: #ffffff;
+
+}
+.yemei>.yemei2>.yemei3:hover{
+    cursor: pointer;
+    color: #ffffff;
+}
+
+
+.yemei ul>li:first-child{
+    border: none;
+    cursor: pointer;
+}
+
+.yemei ul>li::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.yemei ul>li:hover>.erji{
+    color:#ccc;
+    display: block;
+
+
+}
+.yemei ul>li>.erji:hover{
+    cursor: pointer;
+}
+
+.iconfont{
+    line-height: 12px;
+}

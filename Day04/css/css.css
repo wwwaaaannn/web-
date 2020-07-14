@@ -263,3 +263,28 @@ ul{
     border-left: 0px;
 }
 
+/* 页眉 */
+.yemei{
+    height: 36px;
+
+    background-color: #333;
+
+}
+.yemei>.yemei2{
+    margin: 0 auto;
+    width: 1090px;
+}
+.yemei >.yemei2>ul>li{
+    font-size: 15px;
+    float: left;
+    color: #cccccc;
+    position: relative;
+    right: 0;
+}
+
+
+ .yemei >.yemei2>ul>li::after{
+    content: "";
+    clear: both;
+    display: block;
+}
