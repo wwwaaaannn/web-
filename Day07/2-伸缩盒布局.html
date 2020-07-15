@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伸缩盒</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        ul{
+            padding: 1em 0;
+            background-color: #ccc;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content:center;
+        }
+        ul>li{
+            height: 100px;
+            background-color: seagreen;
+            margin-bottom: 1em;
+
+
+        }
+        ul>li:nth-child(odd){
+            background-color: salmon;
+
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>one</li>
+        <li>two</li>
+
+    </ul>
+</body>
+</html>

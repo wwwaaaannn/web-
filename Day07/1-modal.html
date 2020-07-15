@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模态框</title>
+    <style>
+        .header{
+            background-color: powderblue;
+            height: 100px;
+        }
+        .content{
+            height: 900px;
+        }
+        .footer{
+        height: 100px;
+        background-color: #666666;
+        color: #ffffff;
+        
+        }
+        .modal_outer{
+            position: fixed;
+            width: 100%;
+            top: 0;bottom: 0;
+            background-color:rgba(0, 0, 0, .4);
+
+            display: block ;
+        }
+        .modal_outer>.modal{
+            width: 600px;
+            height: 200px;
+            position: absolute;
+            background-color: #ffffff;
+            left: 50%;
+            margin-left: -300px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="modal_outer">
+            <div class="modal">
+
+            </div>
+        </div>
+        <div class="header">
+            头
+        </div>
+        <div class="content">
+            身体
+            <a href="https://www.baidu.com">百度一下</a>
+        </div>
+        <div class="footer"> 尾部  </div>
+    </div>
+</body>
+</html>
