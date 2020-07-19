@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        @media screen and( min-width: 1400px){
+            .products{
+                width: 1200px;
+            }
+        }
+        .products{
+            width: 990px;
+            margin: 0 auto;
+        }
+        .products>ul{
+            display: flex;
+            justify-content: space-between;
+        }
+        .products>ul>li{
+            background-color: purple;
+            height: 100px;
+            width: 19.5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="products">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
