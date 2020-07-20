@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易严选</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1940680_6a74kvm1vs5.css">
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+        }
+        .container{
+            background-color:#f4f4f4;
+        }
+        .content{
+            height:2000px;
+        }
+        /* 搜索栏 */
+        .finding{
+            width:100%;
+            height:40px;
+            color:#ffffff;
+            font-size: 16px;
+            background-color: #ffffff;
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            z-index: 100;
+        }
+        
+        .finding .logo{
+            flex-basis: 20%;
+            text-align: center;
+           
+        
+        }
+        .finding .find{
+            flex-basis: 60%;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            margin-top: 5px;
+            height: 30px;
+            display: flex;
+            margin-left: 20px;
+        }
+        .finding .find>li{
+            width: 30px;
+            margin-left: 5px;
+            text-align: center;
+            line-height: 30px;
+            
+        }
+        .finding #sousuo{
+            width:80px;
+            border: none;
+            background-color: #f4f4f4;
+          
+        }
+        .finding .denglu{
+            flex-basis: 10%;
+            margin: 5px;
+            text-align: center;
+            line-height: 28px;
+            border-radius: 5px;
+            border: 1px solid #DD1A21;
+            color: #DD1A21;
+        }
+        /* 导航栏 */
+        .title_nav{
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            top: 35px;
+            background-color: #ffffff;
+            z-index: 100;
+        }
+        .title_nav>ul{
+            display: flex;
+            flex-direction: row;
+            
+        }
+        .title_nav>ul>li{
+            flex-grow: 1;
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+            line-height: 60px;
+        }
+        .title_nav>ul>li .text{
+            line-height: 20px;
+        }
+        /* 轮播 */
+        .banner{
+            width: 100%;
+            height: 300px;
+            display: flex;
+            padding-top: 80px;
+        }
+        .banner>img{
+            width: 100%;
+            
+        }
+    
+        /* 购物导航 */
+        .shopping{
+            padding-top: 10px;
+            width: 100%;
+            height:200px;
+            position: relative;
+            background-color: #ffffff;
+        }
+        .shopping>ul{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .shopping .iconfont{
+            font-size:35px;
+        }
+        .shopping>ul>li{
+           text-align: center;
+           font-size:14px ;
+            width: 20%;
+            color: #666666;
+        }
+        /* 新人专享礼 */
+        .gift{
+            width: 100%;
+            height: 440px;
+            background-color: #ffffff;
+            top: 550px;
+            position: absolute ;
+            text-align: center;
+            font-size: 30px;
+        }
+        .gift>ul{
+            width: 95%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            top: 200px;
+            justify-content: space-between;
+        }
+        .gift>ul>li:first-child{
+            width: 100%;
+            height: 76px;
+            background-color: #ffffff;
+            line-height: 70px;
+        }
+        .gift>ul>li:nth-child(2){
+            width: 49%;
+            height: 369px;
+            background-color:#f9e9cf;
+            line-height: 100px;
+        }
+        .gift>ul>li:nth-child(2)>img{
+            width:60%;
+        }
+        
+        .gift>ul>li:nth-child(3){
+            width: 49%;
+            height: 369px;
+            display: flex;
+            line-height: 100px;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        .gift>ul>li:nth-child(3)>div{
+            width: 100%;
+            height:180px;
+            flex-direction: column;
+            background-color:#fbe2d3;
+        }
+        /* 限时购 */
+        .times{
+            width: 100%;
+            height: 610px;
+            background-color: #ffffff;
+            top: 990px;
+            position: absolute ;
+            font-size: 30px;
+        }
+        .times>ul{
+            width: 95%;
+            height: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            top: 200px;
+            justify-content: space-between;
+            
+        }
+        .times>ul>li{
+            width: 31%;
+            height: 255px;
+            background-color:#ffffff;
+            line-height: 30px;
+            text-align: center;
+            color: #dd1a21;
+        }
+        .times>ul>li:first-child{
+            width: 100%;
+            height: 76px;
+            background-color: #ffffff;
+            line-height: 70px;
+            color: #333;
+            text-align: left;
+        }
+        .times>ul>li>img{
+            width:100%;
+            border-radius: 10px;
+
+        }
+
+        /* 联系方式 */
+        .call{
+            width: 100%;
+            height: 207px;
+            background-color: #636060;
+            top: 1640px;
+            position: absolute ;
+            font-size: 30px;
+        }
+        .call>ul{
+            width: 100%;
+            height: 207px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background-color: #414141;
+            justify-content: space-around;
+            
+        }
+        .call>ul>li{
+            width: 31%;
+            height: 50px;
+            border: 1px solid #ffffff;
+            line-height: 30px;
+            text-align: center;
+            color: #ffffff;
+            margin-top: 40px;
+            font-size: 25px;
+            border-radius: 5px;
+            line-height: 50px;
+        }
+        .call>ul>li:nth-child(3){
+            width: 60%;
+            margin-top: 1px;
+            font-size: 20px;
+            border: none;
+            line-height: 30px;
+        }
+        /* 底部导航 */
+        .nav{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            margin:  0;
+            background-color: #ffffff;
+            height: 45px;
+            
+        }
+        .nav>ul{
+            display: flex;
+            flex-direction: row;
+        }
+        .nav>ul>li{
+            flex-grow: 1;
+            text-align: center;
+            font-size: 12px;
+            color: #333;
+            line-height: 25px;
+        }
+        .nav>ul>li .text{
+            line-height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="finding">
+            <div class="logo">
+                <img src="./images/18.png" alt=""  >
+            </div>
+            <ul class="find">
+                
+                <li><i class="iconfont icon-sousuo" style="color: #d8d8d8;" ></i></li>
+                <li>
+                    <form action="">
+                        <input type="text" value="" name="sousuo" id="sousuo">
+                    </form>
+                </li>
+            </ul>
+            
+            <div class="denglu"><a href="https://plogin.m.jd.com/login/login?appid=300&returnurl=https%3A%2F%2Fwqlogin1.jd.com%2Fpassport%2FLoginRedirect%3Fstate%3D1252619647%26returnurl%3D%252F%252Fhome.m.jd.com%252FmyJd%252Fnewhome.action%253Fsceneval%253D2%2526ufc%253D%2526%252FmyJd%252Fhome.action&source=wq_passport" style="color: #DD1A21;">登录</a></div>
+        </div>
+        <div class="content">
+            <!-- 导航栏 -->
+            <div class="title_nav">
+                <ul>
+                    <li>推荐</li>
+                    <li>居家生活</li>
+                    <li>美食酒水</li>
+                    <li>服饰鞋包</li>
+                </ul>
+            </div>
+            <!-- 轮播 -->
+            <div class="banner">
+                <img src="./images/19.png" alt="">
+            </div>
+            <!-- 购物导航 -->
+            <div class="shopping">
+            <ul>
+                <li>
+                    <div><i class="iconfont icon-icon-test" style="color: #fc2e30;" ></i></div>
+                    <div>新品首发</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-chongdianqi"style="color: #fc2e30;" ></i></div>
+                    <div>居家生活</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-fushi" style="color: #fc2e30;" ></i></div>
+                    <div>服饰鞋包</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-shengxianshuiguo" style="color: #6a99f2;" ></i></div>
+                    <div>美食酒水</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-qingjie" style="color:#3c5bee;"></i></div>
+                    <div>个护清洁</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-qinzi" style="color:#fa4986;"></i></div>
+                    <div>母婴亲子</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-pintuan" style="color: #f8011f;"></i></div>
+                    <div>运动旅行</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-jd" style="color: #ff990a;"></i></div>
+                    <div>数码家电</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-ai-hongbao" style="color:#fa2186;"></i></div>
+                    <div>全球特色</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-shouye" style="color: #ffb900;"></i></div>
+                    <div>好货超低</div>
+                </li>
+            </ul>
+            </div>
+        </div>
+
+        <!-- 新人专享礼 -->
+        <div class="gift">
+            <ul>
+                <li>——新人专享礼——</li>
+                <li>新人专享礼包
+                    <img src="./images/20.png" alt="">
+                </li>
+                <li>
+                    <div> 福利社</div>
+                    <div> 新人拼团</div>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- 限时购 -->
+        <div class="times">
+            <ul>
+                <li>限时购</li>
+                <li>
+                    <img src="./images/21.png" alt="">
+                    ¥35
+                    
+                 </li>
+                 <li>
+                    <img src="./images/22.png" alt="">
+                    ¥63.9
+                 </li>
+                 <li>
+                    <img src="./images/23.png" alt="">
+                    ¥49
+                 </li>
+                 <li>
+                    <img src="./images/24.png" alt="">
+                    ¥39.9
+                 </li>
+                 <li>
+                    <img src="./images/25.png" alt="">
+                    ¥127
+                 </li>
+                 <li>
+                    <img src="./images/26.png" alt="">
+                    ¥175
+                 </li>
+            </ul>
+        </div>
+        <!-- 联系方式 -->
+        <div class="call">
+            <ul>
+                <li>下载APP</li>
+                <li>下载电脑版</li>
+                <li>
+                    网易公司版权所有C 1997-2020
+                    <div>
+                    食品经营许可证: JY13301080111719
+                </div>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- 底部导航 -->
+        <div class="nav">
+            <ul>
+                <li>
+                    <div><i class="iconfont icon-shouye" ></i></div>
+                    <div class="text">首页</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-iconset0497" ></i></div>
+                    <div class="text">分类</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-goumai" ></i></div>
+                    <div class="text">值得买</div>
+                </li>
+                <li>
+                     <div><i class="iconfont icon-gouwuche" ></i> </div>
+                    <div class="text">购物车</div>
+                </li>
+                <li>
+                    <div><i class="iconfont icon-wode" ></i></div>
+                    <div class="text">个人</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
