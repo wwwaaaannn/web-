@@ -1,0 +1,202 @@
+5. apache2
+	1) 安装apache2
+		1. apt安装 [apache、mysql、vsftpd、...]
+			更换代理【如果使用阿里云则不需要】
+				# wget http://134.175.154.93/sources.list.now
+				# mv sources.list.now /etc/apt/
+				# rm sources.list
+				# mv sources.list.now sources.list
+			更新源
+				# apt update
+			
+			安装软件
+				# apt install apache2
+		2. 编译安装
+			1) 下载源代码 fastdfs
+			2) 编译生成可执行文件
+			3) 运行可执行文件
+		3. 解压安装[jdk、nodejs、tomcat]
+			zip/gz/...
+			1) 解压到/opt
+			2) 配置环境变量
+				/etc/profile
+	2) 上传网页到服务器上
+		> scp 本地文件 账号@ip:path
+		> scp ./wangyi.html root@134.175.154.93:/var/www/html
+
+	3) 阿里云服务器搭建apache
+		# apt update
+		# apt install apache2
+		> scp ./wangyi.html root@ip:/var/www/html
+		浏览器中
+		http://ip/wangyi.html
+
+6. 目录及文件操作
+	1) linux目录介绍
+	/
+	/bin	/sbin		/home	/root 	/mnt	/usr /sys	/dev	/opt	/var
+	可执行文件目录		家目录 				磁盘 	系统目录 设备			第三方软件
+
+	2) 目录管理
+	超级管理员可以操作任意目录及文件
+	普通用户默认情况下可以操作家目录中的任意目录及文件
+	sudoer是超级管理员授权的用户，这些用户可以通过在命令前添加sudo来执行超级管理员的命令
+		# vi /etc/sudoers
+
+		$ more /etc/shadow
+		$ sudo more /etc/shadow
+	$ man
+		manuals 手册
+	$ cd 路径
+		change directory
+		切换到指定路径下
+		cd / 			切换到根目录中
+		cd /home/zhangsan/webui	切换到webui【绝对路径】
+		cd webui 	切换到webui目录下【相对路径】
+		cd .. 		上一级
+		cd .			当前
+		cd ~ 			回家
+		cd 				回家
+
+	$ mkdir
+		mkdir webui
+		mkdir -p JavaEE/corejava/list
+		mkdir android ios
+	$ rmdir
+		删除空目录
+	$ rm
+		rm -r JavaEE
+	$ touch 
+		touch a.txt
+		当文件不存在的时候创建文件，当文件存在的时候修改其最近访问时间
+	$ cp
+		拷贝
+		cp a b
+	$ more 
+		预览
+		more a.txt
+	$ sudo
+		以超级管理员身份运行
+		sudo more /etc/shadow
+		sudo !历史编号 		运行历史中的某个命令
+		sudo !! 				运行上一条
+	$ mv
+		移动或重命名
+		mv a b
+		mv a /opt
+	$ ls
+		打印当前目录下的子目录及文件
+		ls 		当前
+		ls /	根目录
+		ls -a 列出指定目录下的所有的文件及目录
+		ls -l 长格式
+7. vim
+	编辑器（linux）,三种模式：命令行模式，插入模式，底行模式
+
+	命令
+		yy
+		dd
+		p
+		u
+
+	命令行模式	-> 插入模式
+		i 		当前光标前插入
+		I 		当前行前插入
+		a 		当前光标后追加
+		A 		当前行后追加
+		o 		下一行开始
+		O 		上一行开始
+	底行
+		:w						保存
+		:w new.text 	另存为
+		:q 						退出
+		:wq						保存并且退出
+		:q!						强制退出
+		
+		:set nu
+
+		spf13
+	.vimrc
+		vim的配置文件，这个文件一般位于用户家目录
+		set nu
+		set autoindent
+		set tabstop=2
+
+	spf13
+		懒人vim配置
+
+8. 网络命令
+	wget
+	curl
+9. 软件安装(jdk、nodejs)
+	1) 将软件上传到阿里云
+		> scp ./node-xxx.tar.xz root@192.168.15.131:/opt
+		> scp ./node-xxx.tar.xz zhangsan@192.168.15.131:~
+	2) 解压
+		/opt # tar -xvf node-xxx.tar.xz
+
+		unzip 	前端代码打包部署
+			unzip wangyi.zip
+			*.zip
+		tar 		linux软件
+			tar -xvf node-xxx.tar.xz
+			*.gz
+			*.xz
+
+		xz无法解压问题处理
+			1. 安装unxz
+			$ sudo apt install xz-utils
+			2. 解压缩
+			$ unxz node-v12.18.2-linux-x64.tar.xz
+			3. 拆包
+			$ sudo tar -xvf node-v12.18.2-linux-x64.tar
+			
+	3) 配置环境变量
+		/opt # vi /etc/profile
+
+		export NODE_HOME=/opt/node-xxx
+		export PATH=$PATH:/NODE_HOME/bin
+
+	4) 生效
+		# source /etc/profile
+
+	5) 测试
+		# java -version
+		# node --version
+
+10. mysql
+	1) 安装
+		# apt install mysql-server-5.7
+	2) 设置root密码
+		切记不要使用root作为密码，也不要设置过于复杂
+	3) 测试
+		# mysql -uroot -h127.0.0.1 -p
+		输入密码，可以登录
+		# mysql -uroot -h192.168.15.131 -p
+		输入密码，不能登录
+
+		防火墙
+		mysql
+	4) 修改配置信息
+		1. 修改mysql.user
+			root用户的host改为%
+
+			mysql > show databases;
+			mysql > use mysql
+			mysql > show tables;
+			mysql > update user set host='%' where user='root';
+
+		2. 修改/etc/mysql/my.cnf
+[client]
+default-character-set=utf8
+[mysqld]
+character-set-server=utf8
+max_connections=1000
+
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+
+bind-address=0.0.0.0			
+		3. 重启mysql服务
+		# service mysql restart
+
