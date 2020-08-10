@@ -1,0 +1,197 @@
+13.dom
+    1.api结构
+        构造函数
+                node
+        Element Document Text Commont
+        HTMLElement  HtmlDocument
+        HTMlDIVElement
+
+        实例对象
+        绝大多数的标签转换成的js对象都称为是Element的实例对象
+
+        document 是HTMLDocument的实例对象
+
+    2）api介绍
+        1.node
+            属性
+            parentNode
+            childNodes
+            
+            方法
+                appendeChild()
+                insertBefore()
+                replaceChild()
+                removeChild()
+                cloneNode（[boolean]）
+        2.Element
+
+        3.Document
+        getElementById
+        getElementsByname
+        getElementsByname
+        getElementsByname
+
+
+getAttribute
+getAttributenames()
+setAttribute
+
+
+4)事件机制
+    1.三要素：
+    事件源： dom对象（元素节点）
+    事件处理函数：匿名函数
+    事件对象：记录了事件的详细信息
+
+    2.基本概念：
+    1）事件类型
+        click
+        dbclick
+        mouseover
+        mouseenter
+        mouseleave
+        mouseout
+        keydown
+        keyup
+        keypress
+        blur
+        focus
+        onscroll
+        。。。
+    2）默认行为事件
+        a标签，form标签中，我们并没有为元素绑定事件，但是操作之后却有事件行为。
+    3）事件冒泡
+        1.元素具有嵌套关系
+        2.每层元素都绑定事件处理函数
+        3.操作
+        比如：当我们点击inner的时候，实际上也点击了center，outer。
+        事件捕获：outer -> center -> inner
+        事件处理函数的调用默认是按照事件冒泡的顺序来调用
+        事件冒泡：inner-> center-> outer
+    4)target(目标元素)
+        操作的元素
+    3.事件绑定
+        事件源.on事件类型 = 事件处理函数(事件对象){
+        兼容性比较好
+
+        }
+        镇上的农业银行.on抢劫事件 = function(event){
+            //出警
+            event 记录了所有的抢劫细节
+        }
+
+        dom.onClick = function(event){
+
+
+        }
+    1）onXxx
+    2）addEventListener
+    3）attachEvent
+    4.事件对象
+        event.target
+        事件的目标元素（操作的元素）
+        event.clientX
+        event.clientY
+        事件触发时的坐标
+        event.preventDefault()
+        阻止事件的默认行为
+        event.stopPropagation()
+        取消事件冒泡
+
+
+
+        jQuery对象是一个类数组对象，类数组对象中的元素是Element元素，
+        jQuery对象 -> dom对象
+
+
+
+
+18.bom【浏览器】
+    js -> 浏览器（ajax）  交互
+    1）超时调用&间歇调用
+        var flag = setTimeout（function（）{
+
+
+        },1000）
+        经过1000ms以后调用回调函数，只调用一次，1000ms不可靠。
+        问题：如何使用超时调用来模仿一个间歇调用
+
+
+
+    2）提示框  （企业级不会直接使用这些提示框）
+    alert       警告框
+        阻塞代码的运行
+    prompt      提示框
+    confirm     确认框
+
+
+    3）打开页面
+        window.href = ""
+
+    4)变量作用域
+        1.全局作用域，全局执行环境
+        2.方法作用域，方法执行环境
+
+
+    5）window的滚动监听
+    6）history
+    7）路由原理
+    8）async javascript and xml，回调函数
+        异步的javascript和xml（json）
+        主要用于前后台分离开发中数据的交互，占据我们开发的50%以上，
+        异步：
+            function(){
+                查询文章信息    ajax
+                查询用户信息    ajax
+                查询评论信息    ajax
+                console.log(end);
+            }
+
+            三个查询同时进行，由于网络等原因，返回结果的时间是不确定的，
+            因此，console.log("end")最先执行
+
+        数据传递：
+        A - B方法，B方法如何将结果返回？
+        同步方式（返回）
+        function foo(){
+            return "";
+        }
+        var a = foo();
+        同步方式（回调）
+        function（handler）{
+            未来的某个时刻才能获取到；
+            handler（"结果"）
+        }
+        foo（function（）{}）;
+
+    实现过程
+    1）实例化XMLHttpRequest
+        var xhr = new XMLHttpRequest
+    2)设置请求行
+        xhr.open(method,url)
+    3）设置请求头
+        请求方式method = "POST"的时候才会content-Type
+        xhr.setRequestHeader(key,val)
+    4）设置请求体
+        请求方式method = "POST"的时候才会传递data
+        xhr.send(data)
+    5）监听请求状态
+        xhr.onreadystatechange = function(){
+            if(this.state === 4){
+                if(this.status === 200){
+                    console.log(this.response);
+                }
+            }
+        }
+
+ajax 
+
+
+
+在老师的代码基础上完成用户管理
+1.登陆
+2.获取用户信息
+3.分页查询所有用户信息
+4.删除用户信息
+5.修改用户信息
+6.添加用户信息

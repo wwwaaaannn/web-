@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆</title>
+</head>
+<body>
+    <form id="form_login" action="http://localhost:7788/user/login" method="POST">
+    账号<input type="text" name="username">
+    密码<input type="password" name="password">
+    <input type="submit" value="登陆">
+    </form>
+    <div id="content" style="display: none;">
+        欢迎您，<span id="user_info"></span>
+    </div>
+
+
+</body>
+<script>
+    var token;
+    var $form = document.querySelector('#form_login');
+    var $content = document.querySelector('#content');
+    $form.onsubmit = function(event){
+        //初始化xhr对象
+        var xhr = new XMLHttpRequest();
+        //设置请求行
+        xhr.open("POST","http://localhost:7788/user/login")
+        //请求头
+        xhr.setRequestHeader("Content-Type","application/json;charset=utf-8")
+        //请求体
+        var username = document.querySelector("#form_login input[name = username]").value;
+        var password = document.querySelector("#form_login input[name = password]").value;
+        var data = {
+            username:username,
+            password:password
+        }
+        xhr.send(JSON.stringify(data))   
+        
+        //监听响应
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                if(xhr.status === 200)
+                var resp = JSON.parse(xhr.response);
+                console.log(resp);
+                if(resp.status === 200){
+                    token = resp.data.token;
+                    alert("登陆成功")
+                    $form.style.display = "none";
+                    $content.style.display = "block";
+                }else{
+                    alert(resp.message);
+                }
+            }
+        }
+        //阻止表单页面刷新
+        event.preventDefault();
+    }
+
+    function getInfo(){
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET","http://localhost:7788/user/info");
+        xhr.setRequestHeader("AUthorization",token);
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        var data = {
+            token:token
+        }
+        // 查询字符串 key = val&key=val
+        //  json{key:val,key:cal}
+        xhr.send()
+
+
+    }
+</script>
+</html>
